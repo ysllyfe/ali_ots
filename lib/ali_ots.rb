@@ -55,24 +55,27 @@ require 'ali_ots/metas/update_row_request'
 require 'ali_ots/metas/update_row_response'
 require 'ali_ots/metas/update_table_request'
 require 'ali_ots/metas/update_table_response'
+require 'ali_ots/metas/index_info'
+require 'ali_ots/metas/list_search_index_request'
+require 'ali_ots/metas/list_search_index_response'
 
 
 module AliOts
-  
+
   AliOts::CONFIG = {
     DEBUG_LEVEL: ::Logger::DEBUG,
     END_POSITION: nil,
     ACCESS_ID: nil,
     ACCESS_KEY: nil,
-    INSTANCE_NAME: nil, 
-    APIVERSION: "2014-08-08"
+    INSTANCE_NAME: nil,
+    APIVERSION: "2015-12-31"
   }
-  
+
   extend self
   def configure
     yield(AliOts::CONFIG)
   end
-  
+
 end
 
 

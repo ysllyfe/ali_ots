@@ -17,7 +17,7 @@ AliOts.configure do |config|
   config[:ACCESS_ID] = "xxxxx"
   config[:ACCESS_KEY] = "xxxxx"
   config[:INSTANCE_NAME] = "test"
-  config[:APIVERSION] = "2014-08-08"
+  config[:APIVERSION] = "2015-12-31"
 end
 ```
 
@@ -74,7 +74,7 @@ primary_keys = [AliOts::Metas::Column.new(name: "id", value: AliOts::Metas::Colu
 user_name_column = AliOts::Metas::Column.new(name: "user_name", value: AliOts::Metas::ColumnValue.new(type: AliOts::Metas::Enums::ColumnType::STRING, v_string: "zhao"))
 age_column = AliOts::Metas::Column.new(name: "age", value: AliOts::Metas::ColumnValue.new(type: AliOts::Metas::Enums::ColumnType::INTEGER, v_int: 27))
 attribute_columns = [user_name_column, age_column]
-    
+
 client.update_row("myTable", condition_type, primary_keys, attribute_columns)
 
 
@@ -87,7 +87,7 @@ client.delete_row("myTable", condition_type, primary_keys)
 
 ##读取指定主键范围内的数据##
 #FORWARD 表示此次查询按照主键由小到大的顺序进行, BACKWARD 表示此次查询按照主键由大到小的顺序进行
-direction = AliOts::Metas::Enums::Direction::FORWARD 
+direction = AliOts::Metas::Enums::Direction::FORWARD
 inclusive_start_primary_keys = [AliOts::Metas::Column.new(name: "id", value: AliOts::Metas::ColumnValue.new(type: AliOts::Metas::Enums::ColumnType::INTEGER, v_int: 1))]
 exclusive_end_primary_keys = [AliOts::Metas::Column.new(name: "id", value: AliOts::Metas::ColumnValue.new(type: AliOts::Metas::Enums::ColumnType::INTEGER, v_int: 999))]
 
@@ -113,3 +113,7 @@ rows = [row1]
 tables = [AliOts::Metas::TableInBatchWriteRowRequest.new(table_name: 'myTable', put_rows: rows)]
 
 client.batch_write_row(tables)
+
+
+##查询索引
+client.list_search_index(table_name)
